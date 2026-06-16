@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nerissa Mengyi Li — Artist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+  :root{--ink:#07090F;--void:#0C0E16;--ice:#E8F4F8;--aqua:#7DC4D8;--aqua-dim:#4A8FA3;--pearl:#D6EAF0;--mist:#B8D4DC;--cyan-san:#5BBFCC;--gold:#C8A96E;--white:#F2F6F8;--mid:#3A4A52;--glass:rgba(125,196,216,0.08);--glass-b:rgba(125,196,216,0.18);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--void);color:var(--ice);font-family:'Inter',sans-serif;font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;opacity:0.4;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;background:linear-gradient(to bottom,rgba(7,9,15,0.92),transparent);backdrop-filter:blur(2px);}
+  .nav-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:0.12em;color:var(--mist);text-decoration:none;}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--aqua-dim);text-decoration:none;transition:color 0.3s;}
+  .nav-links a:hover{color:var(--aqua);}
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+  .orb-1{width:600px;height:600px;top:-80px;right:-100px;background:radial-gradient(circle,rgba(91,191,204,0.12),transparent 70%);}
+  .orb-2{width:400px;height:400px;bottom:100px;left:10%;background:radial-gradient(circle,rgba(74,143,163,0.10),transparent 70%);}
+  .orb-3{width:300px;height:300px;top:40%;right:30%;background:radial-gradient(circle,rgba(200,169,110,0.06),transparent 70%);}
+  .hero-ring{position:absolute;top:50%;right:8%;transform:translateY(-55%);width:420px;height:420px;opacity:0.12;pointer-events:none;}
+  @keyframes rotate-slow{to{transform:translateY(-55%) rotate(360deg);}}
+  .hero-ring{animation:rotate-slow 60s linear infinite;}
+  .hero-eyebrow{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--aqua-dim);margin-bottom:24px;}
+  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,8vw,110px);font-weight:300;line-height:0.95;color:var(--white);margin-bottom:12px;}
+  .hero-title em{font-style:italic;color:var(--aqua);}
+  .hero-chinese{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,38px);font-weight:300;letter-spacing:0.25em;color:var(--mist);margin-bottom:36px;}
+  .hero-sub{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--aqua-dim);max-width:480px;line-height:2;}
+  .hero-scroll{margin-top:60px;display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid);}
+  .hero-scroll-line{width:48px;height:1px;background:linear-gradient(to right,var(--aqua-dim),transparent);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  .fade-up{opacity:0;animation:fadeUp 0.9s ease forwards;}
+  .fade-up:nth-child(1){animation-delay:0.1s;}
+  .fade-up:nth-child(2){animation-delay:0.25s;}
+  .fade-up:nth-child(3){animation-delay:0.40s;}
+  .fade-up:nth-child(4){animation-delay:0.55s;}
+  section{position:relative;z-index:1;}
+  .section-inner{max-width:1100px;margin:0 auto;padding:120px 48px;}
+  .section-label{font-size:9px;letter-spacing:0.30em;text-transform:uppercase;color:var(--aqua-dim);margin-bottom:56px;display:flex;align-items:center;gap:16px;}
+  .section-label::after{content:'';flex:1;max-width:80px;height:1px;background:var(--aqua-dim);opacity:0.4;}
+  .divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(125,196,216,0.15),transparent);}
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .about-question{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,40px);font-weight:300;font-style:italic;color:var(--pearl);line-height:1.4;margin-bottom:40px;}
+  .about-body{color:var(--mist);font-size:14px;line-height:1.9;}
+  .about-body p+p{margin-top:20px;}
+  .about-tags{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(125,196,216,0.20);color:var(--aqua-dim);border-radius:2px;}
+  .credential{display:flex;gap:20px;padding:16px 0;border-bottom:1px solid rgba(125,196,216,0.06);font-size:13px;color:var(--mist);}
+  .credential-year{color:var(--aqua-dim);min-width:50px;font-size:11px;}
+  /* RESEARCH */
+  .research-bg{background:linear-gradient(135deg,rgba(91,191,204,0.04),rgba(7,9,15,0) 60%);}
+  .research-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.6vw,32px);font-weight:300;color:var(--pearl);line-height:1.6;max-width:760px;margin-bottom:80px;}
+  .research-intro em{font-style:italic;color:var(--cyan-san);}
+  .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .research-card{background:var(--glass);border:1px solid rgba(125,196,216,0.10);padding:48px 40px;transition:background 0.4s,border-color 0.4s;}
+  .research-card:hover{background:var(--glass-b);border-color:rgba(125,196,216,0.22);}
+  .rc-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:rgba(125,196,216,0.15);line-height:1;margin-bottom:16px;}
+  .rc-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--aqua);margin-bottom:6px;}
+  .rc-chinese{font-size:11px;letter-spacing:0.20em;color:var(--aqua-dim);margin-bottom:20px;}
+  .rc-body{font-size:13px;color:var(--mist);line-height:1.8;}
+  .rc-year{margin-top:24px;font-size:10px;letter-spacing:0.20em;text-transform:uppercase;color:var(--mid);}
+  /* WORKS */
+  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .work-item{position:relative;overflow:hidden;background:var(--glass);border:1px solid rgba(125,196,216,0.08);aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 24px;transition:border-color 0.4s;}
+  .work-item:hover{border-color:rgba(125,196,216,0.25);}
+  .work-item:hover .work-overlay{opacity:1;}
+  .work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,15,0.85) 0%,transparent 55%);opacity:0.6;transition:opacity 0.4s;}
+  .work-visual{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(125,196,216,0.06);letter-spacing:-0.02em;}
+  .work-meta{position:relative;z-index:2;}
+  .work-type{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--aqua-dim);margin-bottom:8px;}
+  .work-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:var(--pearl);line-height:1.2;margin-bottom:4px;}
+  .work-title-zh{font-size:11px;letter-spacing:0.18em;color:var(--aqua-dim);}
+  .work-detail{margin-top:12px;font-size:11px;color:var(--mid);line-height:1.6;}
+  .work-item.featured{grid-column:span 2;aspect-ratio:16/9;}
+  .work-item.featured .work-visual{font-size:140px;}
+  /* EXHIBITIONS */
+  .ex-item{display:grid;grid-template-columns:100px 1fr auto;gap:32px;align-items:baseline;padding:22px 0;border-bottom:1px solid rgba(125,196,216,0.08);transition:background 0.2s;}
+  .ex-item:hover{background:rgba(125,196,216,0.03);}
+  .ex-year{font-size:11px;color:var(--aqua-dim);letter-spacing:0.10em;}
+  .ex-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--pearl);}
+  .ex-venue{font-size:11px;color:var(--mid);text-align:right;white-space:nowrap;}
+  /* CURATORIAL */
+  .curatorial-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .cur-card{border:1px solid rgba(125,196,216,0.10);padding:32px 28px;transition:border-color 0.3s;}
+  .cur-card:hover{border-color:rgba(125,196,216,0.25);}
+  .cur-year{font-size:10px;letter-spacing:0.18em;color:var(--aqua-dim);margin-bottom:14px;}
+  .cur-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--pearl);margin-bottom:8px;line-height:1.4;}
+  .cur-role{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan-san);margin-bottom:12px;}
+  .cur-body{font-size:12px;color:var(--mid);line-height:1.7;}
+  /* COLLECTIONS */
+  .collections-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+  .col-card{background:var(--glass);border:1px solid rgba(125,196,216,0.08);padding:36px 28px;}
+  .col-type{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--aqua-dim);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .col-type::before{content:'';width:18px;height:1px;background:var(--aqua-dim);}
+  .col-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--pearl);margin-bottom:10px;}
+  .col-body{font-size:12px;color:var(--mid);line-height:1.8;}
+  /* MEDIA */
+  .media-grid{display:flex;flex-wrap:wrap;gap:12px;}
+  .media-tag{font-size:11px;letter-spacing:0.12em;padding:8px 18px;border:1px solid rgba(125,196,216,0.14);color:var(--mist);border-radius:1px;}
+  /* CONTACT */
+  .contact-section{background:linear-gradient(to bottom,transparent,rgba(91,191,204,0.04));border-top:1px solid rgba(125,196,216,0.08);}
+  .contact-inner{max-width:1100px;margin:0 auto;padding:100px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .contact-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;color:var(--pearl);line-height:1.1;}
+  .contact-headline em{font-style:italic;color:var(--aqua);}
+  .contact-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(125,196,216,0.08);}
+  .contact-label{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--mid);}
+  .contact-value{font-size:13px;color:var(--mist);text-decoration:none;transition:color 0.3s;}
+  .contact-value:hover{color:var(--aqua);}
+  footer{border-top:1px solid rgba(125,196,216,0.06);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:0.14em;color:var(--mid);}
+  @media(max-width:768px){
+    nav{padding:18px 24px;}
+    .nav-links{gap:16px;}
+    .nav-links a{font-size:9px;}
+    .hero{padding:0 24px 60px;}
+    .section-inner{padding:80px 24px;}
+    .about-grid,.research-grid,.works-grid,.curatorial-scroll,.collections-grid,.contact-inner{grid-template-columns:1fr;}
+    .work-item.featured{grid-column:span 1;aspect-ratio:3/4;}
+    .ex-item{grid-template-columns:1fr;gap:4px;}
+    .ex-venue{text-align:left;}
+    footer{flex-direction:column;gap:8px;text-align:center;}
+    .hero-ring{width:240px;height:240px;opacity:0.07;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#">Nerissa Mengyi Li</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#curatorial">Curatorial</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <svg class="hero-ring" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="210" cy="210" r="190" stroke="rgba(125,196,216,1)" stroke-width="0.5"/>
+    <circle cx="210" cy="210" r="168" stroke="rgba(125,196,216,0.4)" stroke-width="0.3"/>
+    <circle cx="210" cy="20"  r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="262" cy="25"  r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="311" cy="41"  r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="353" cy="67"  r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="384" cy="105" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="400" cy="152" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="400" cy="210" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="400" cy="268" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="384" cy="315" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="353" cy="353" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="311" cy="379" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="262" cy="395" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="210" cy="400" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="158" cy="395" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="109" cy="379" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="67"  cy="353" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="36"  cy="315" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="20"  cy="268" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="20"  cy="210" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="20"  cy="152" r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="36"  cy="105" r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="67"  cy="67"  r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <circle cx="109" cy="41"  r="3.5" fill="rgba(214,234,240,1)"/>
+    <circle cx="158" cy="25"  r="2.2" fill="rgba(214,234,240,0.7)"/>
+    <ellipse cx="210" cy="210" rx="30" ry="16" stroke="rgba(125,196,216,0.5)" stroke-width="0.6"/>
+    <circle  cx="210" cy="210" r="9"  fill="rgba(74,143,163,0.5)"/>
+    <circle  cx="210" cy="210" r="4"  fill="rgba(7,9,15,0.8)"/>
+    <circle  cx="213" cy="207" r="1.5" fill="rgba(232,244,248,0.9)"/>
+  </svg>
+  <div class="fade-up"><p class="hero-eyebrow">Contemporary Artist · Curator · Art Strategy Researcher</p></div>
+  <div class="fade-up"><h1 class="hero-title">Nerissa<br><em>Mengyi</em> Li</h1></div>
+  <div class="fade-up"><p class="hero-chinese">李梦忆</p></div>
+  <div class="fade-up">
+    <p class="hero-sub">Shenzhen &amp; London · MA Istituto Marangoni<br>
+    Working at the intersection of self-knowledge,<br>embodied perception, and what makes us human in the age of AI.</p>
+    <div class="hero-scroll"><span class="hero-scroll-line"></span><span>Scroll to explore</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div>
+        <p class="about-question">"When the world continues to change, how do we avoid losing ourselves?"</p>
+        <div class="about-tags">
+          <span class="tag">Moving Image</span>
+          <span class="tag">AI Narrative</span>
+          <span class="tag">Immersive Environment</span>
+          <span class="tag">Public Intervention</span>
+          <span class="tag">Interdisciplinary Research</span>
+          <span class="tag">Embodied Perception</span>
+        </div>
+      </div>
+      <div>
+        <div class="about-body">
+          <p>Nerissa Mengyi Li is an interdisciplinary artist, independent curator, and art strategy researcher working between Shenzhen and London. Her practice begins with a persistent question: as the world continues to change, how do we remain ourselves?</p>
+          <p>Over the past several years her work has spanned public art, cultural strategy, urban regeneration, educational initiatives, and contemporary artistic creation. Through collaboration with cities, institutions, communities, and cultural systems, she has become increasingly interested in how technological transformation reshapes the ways we understand the world, others, and ourselves.</p>
+          <p>Rather than focusing on AI as a technological phenomenon, her research investigates a deeper human question: as more and more human capacities are mediated by external intelligent systems, how do we continue becoming ourselves?</p>
+        </div>
+        <div style="border-top:1px solid rgba(125,196,216,0.10);padding-top:40px;margin-top:40px;">
+          <div class="credential"><span class="credential-year">MA</span><span>Istituto Marangoni</span></div>
+          <div class="credential"><span class="credential-year">Cert</span><span>University of Cambridge Lifelong Growth Programme</span></div>
+          <div class="credential"><span class="credential-year">Role</span><span>Official Art Strategy Consultant, Venice Architecture Biennale China Division</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="research" class="research-bg">
+  <div class="section-inner">
+    <p class="section-label">Research</p>
+    <p class="research-intro">Two interconnected projects form two stages of the same inquiry: one reveals the risks of <em>seeking meaning entirely outside ourselves</em>; the other explores how we might <em>return to ourselves</em>.</p>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="rc-num">I</div>
+        <div class="rc-title">ID-T7.16</div>
+        <div class="rc-chinese">AI · Intimacy · Identity</div>
+        <div class="rc-body">A sci-fi moving-image work set on Planet N31, where a preserved heart recounts how the pursuit of perfect love led to humanity's demise. Companion robots fulfill desire yet erode real emotion. When love is programmable and death circumvented — what defines us? The work examines future forms of intimacy shaped by AI, asking whether increasing technological companionship encourages people to seek meaning through external systems rather than within themselves.</div>
+        <div class="rc-year">2025 · Times Square, New York · Venice International Art Fair · Louvre, Paris</div>
+      </div>
+      <div class="research-card">
+        <div class="rc-num">II</div>
+        <div class="rc-title">Kan Shan Shui</div>
+        <div class="rc-chinese">看山水 · Seeing the Landscape</div>
+        <div class="rc-body">Drawing from the classical Chinese philosophical progression — the mountain is a mountain; the mountain is no longer a mountain; the mountain is once again a mountain — this work explores how encounters with the world can become a process of self-recognition and the formation of an inner anchor. Centered on the eye-hand motif, it reconnects seeing with touch and consciousness with the body, constructing a posthuman surreal landscape in which the body is a medium for perceiving the world, not an object to be viewed.</div>
+        <div class="rc-year">2025–2026 · Digital moving image · 2D illustration series · Limited edition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="works">
+  <div class="section-inner">
+    <p class="section-label">Selected Works</p>
+    <div class="works-grid">
+      <div class="work-item featured">
+        <div class="work-visual">看</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Digital Moving Image · Illustration · 2026</div>
+          <div class="work-title">Kan Shan Shui 2D World</div>
+          <div class="work-title-zh">看山水 二维世界</div>
+          <div class="work-detail">Sanxingdui cyan palette · Mandala eye-hand wheel · Floating cloud-islands · Zhuangzi butterfly motif · Three stages of seeing</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-visual">水</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Digital Moving Image · 2025–2026</div>
+          <div class="work-title">Kan Shan Shui 1.0</div>
+          <div class="work-title-zh">看山水 1.0</div>
+          <div class="work-detail">1 min 2 sec · Limited edition 5 of 5 · USD 328 per edition</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-visual">ID</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Sci-Fi Moving Image · 2025</div>
+          <div class="work-title">ID-T7.16</div>
+          <div class="work-title-zh">身份 · 技术 · 亲密关系</div>
+          <div class="work-detail">Times Square · Venice International Art Fair · Atlas of Empathy, Louvre</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-visual">炼</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Digital Visual · Installation · Performance · 2025</div>
+          <div class="work-title">Red Inferno</div>
+          <div class="work-title-zh">赤炎</div>
+          <div class="work-detail">Ancient Lingnan blessing dance fused with futuristic digital projections. Self-deconstruction and authentic rebirth.</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-visual">哪</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Public Art · Digital Animation · 2025</div>
+          <div class="work-title">Awakening Nezha</div>
+          <div class="work-title-zh">哪吒苏醒</div>
+          <div class="work-detail">Government-commissioned · Foshan Ancestral Temple · Nanfeng Ancient Kiln · Permanent public collection</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-visual">梦</div>
+        <div class="work-overlay"></div>
+        <div class="work-meta">
+          <div class="work-type">Site-Specific · Immersive Installation · 2025</div>
+          <div class="work-title">Redemption Dream</div>
+          <div class="work-title-zh">赎梦</div>
+          <div class="work-detail">Hong Kong Film Awards shortlisted · Digital imagery interweaving with dance · HK / Shenzhen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="exhibitions">
+  <div class="section-inner">
+    <p class="section-label">Selected Exhibitions</p>
+    <div>
+      <div class="ex-item"><span class="ex-year">2025</span><span class="ex-title">The Times Square Showcase — ID-T7.16</span><span class="ex-venue">New York, USA</span></div>
+      <div class="ex-item"><span class="ex-year">2025</span><span class="ex-title">Venice International Art Fair</span><span class="ex-venue">Venice, Italy</span></div>
+      <div class="ex-item"><span class="ex-year">2025</span><span class="ex-title">Atlas of Empathy — 2nd Contemporary Emerging Art Exhibition</span><span class="ex-venue">Louvre Museum, Paris</span></div>
+      <div class="ex-item"><span class="ex-year">2025</span><span class="ex-title">ERA Contemporary — Lucent Waters Open Call</span><span class="ex-venue">International / Online</span></div>
+      <div class="ex-item"><span class="ex-year">2025</span><span class="ex-title">Awakening Nezha — Interdisciplinary Public Art Initiative</span><span class="ex-venue">Foshan, China</span></div>
+      <div class="ex-item"><span class="ex-year">2024</span><span class="ex-title">The Fourfold Dreamscape of Pigskin — Ng Cheuk Hai Solo Exhibition</span><span class="ex-venue">Foshan / Hong Kong</span></div>
+      <div class="ex-item"><span class="ex-year">2024</span><span class="ex-title">The Pulse of the Dragon Heart</span><span class="ex-venue">China</span></div>
+      <div class="ex-item"><span class="ex-year">2022</span><span class="ex-title">BGI × One Shenzhen Bay Bio-Art Exhibition</span><span class="ex-venue">Shenzhen, China</span></div>
+      <div class="ex-item"><span class="ex-year">2020</span><span class="ex-title">Porsche Taycan China Launch Public Art Performance</span><span class="ex-venue">Shenzhen, China</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="curatorial">
+  <div class="section-inner">
+    <p class="section-label">Curatorial Practice</p>
+    <div class="curatorial-scroll">
+      <div class="cur-card"><div class="cur-year">2024</div><div class="cur-title">The Gates of Hell</div><div class="cur-role">Chief Curator</div><div class="cur-body">Outdoor immersive media art exhibition integrating monumental naked-eye 3D screens, experimental dance, and spatial intervention. Shenzhen / Foshan.</div></div>
+      <div class="cur-card"><div class="cur-year">2024</div><div class="cur-title">Re-Encountering The Classic of Mountains and Seas</div><div class="cur-role">Chief Curator</div><div class="cur-body">First urban-renewal construction-site art festival transforming industrial ruins into contemporary art environments. Foshan, China.</div></div>
+      <div class="cur-card"><div class="cur-year">2024</div><div class="cur-title">Greater Bay Area Sino-Italian Public Culture Forum</div><div class="cur-role">Lead Curator & Strategic Planner</div><div class="cur-body">Collaborating with IUAV University of Venice, Tsinghua University Academy of Arts & Design, and Central Academy of Fine Arts.</div></div>
+      <div class="cur-card"><div class="cur-year">2023</div><div class="cur-title">The Hall of Rebirth</div><div class="cur-role">Co-Curator</div><div class="cur-body">Contemporary site-specific art project with leading Chinese art critic Professor Wang Lin and international biennale planners.</div></div>
+      <div class="cur-card"><div class="cur-year">2023</div><div class="cur-title">Sanxingdui World Heritage Cultural Strategy</div><div class="cur-role">Core Strategic Planner</div><div class="cur-body">Contemporary reinterpretation and spatial redesign of the Sanxingdui cultural heritage ecosystem. Deyang, China.</div></div>
+      <div class="cur-card"><div class="cur-year">2022</div><div class="cur-title">BGI × One Shenzhen Bay Bio-Art Exhibition</div><div class="cur-role">Chief Curator & Artistic Director</div><div class="cur-body">Cross-disciplinary exhibition exploring life sciences, biotechnology, and posthuman aesthetics. Shenzhen, China.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="collections">
+  <div class="section-inner">
+    <p class="section-label">Collections & Recognition</p>
+    <div class="collections-grid">
+      <div class="col-card"><div class="col-type">Permanent Public Collection</div><div class="col-title">Awakening Nezha Series</div><div class="col-body">The complete mythological portrait series, digital animations, and narrative scripts are permanently archived and exhibited across national cultural heritage landmarks in Foshan, China.</div></div>
+      <div class="col-card"><div class="col-type">Institutional Collection</div><div class="col-title">Wave</div><div class="col-body">Limited-edition textile artwork permanently collected by Baobei Meishu Art Institution, Shanghai.</div></div>
+      <div class="col-card"><div class="col-type">Media Commission</div><div class="col-title">All Things Silent as Mystery</div><div class="col-body">Commissioned by VOGUE China in 2013 to create a limited-edition oceanic art textile series for exclusive VIP distribution.</div></div>
+    </div>
+    <div style="margin-top:60px;">
+      <p class="section-label">Media Coverage</p>
+      <div class="media-grid">
+        <span class="media-tag">CCTV</span><span class="media-tag">Xinhua News Agency</span><span class="media-tag">VOGUE China</span><span class="media-tag">ELLE</span><span class="media-tag">YOHO!</span><span class="media-tag">Artron Art</span><span class="media-tag">Guangzhou Daily</span><span class="media-tag">Yangcheng Evening News</span><span class="media-tag">Sina News</span><span class="media-tag">NetEase</span><span class="media-tag">Sohu Culture</span><span class="media-tag">The Urgency of Art — UK Issue #10</span><span class="media-tag">Sol de Paris Gallery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-headline">Let's<br><em>connect.</em></h2>
+      <p style="margin-top:28px;font-size:13px;color:var(--mid);max-width:320px;line-height:1.8;">For exhibition inquiries, acquisition of <em style="color:var(--aqua);font-style:italic;">看山水</em>, curatorial collaborations, or press requests — reach out directly.</p>
+    </div>
+    <div>
+      <div class="contact-row"><span class="contact-label">Email</span><a class="contact-value" href="mailto:mengyinerissali@gmail.com">mengyinerissali@gmail.com</a></div>
+      <div class="contact-row"><span class="contact-label">Instagram</span><a class="contact-value" href="https://instagram.com/mmmylii" target="_blank">@mmmylii</a></div>
+      <div class="contact-row"><span class="contact-label">Location</span><span class="contact-value">Shenzhen &amp; London</span></div>
+      <div class="contact-row"><span class="contact-label">Acquisition</span><span class="contact-value">看山水 · Limited Ed. 5 of 5 · USD 328</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025–2026 Nerissa Mengyi Li. All rights reserved.</span>
+  <span style="letter-spacing:0.08em;">看山水 · Seeing the Landscape · Shenzhen &amp; London</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.research-card,.work-item,.ex-item,.cur-card,.col-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
